@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anhell OS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="loginScreen">
+    <h2>Bienvenido a Anhell OS</h2>
+    <input type="text" id="username" placeholder="Nombre de usuario">
+    <input type="password" id="password" placeholder="Contraseña">
+    <button onclick="login()">Entrar</button>
+  </div>
+
+  <div id="desktop">
+    <div id="icons">
+      <div class="icon" onclick="openWindow('explorer')">🗂️<br>Explorador</div>
+      <div class="icon" onclick="openWindow('browser')">🌐<br>Navegador</div>
+      <div class="icon" onclick="openWindow('chat')">💬<br>Chat</div>
+      <div class="icon" onclick="openWindow('settings')">⚙️<br>Ajustes</div>
+      <div class="icon" onclick="openWindow('admin')">🔐<br>Admin</div>
+      <div class="icon" onclick="openWindow('assistant')">🤖<br>Asistente</div>
+    </div>
+    <div id="taskbar">Anhell OS</div>
+  </div>
+
+  <!-- Ventanas -->
+  <div class="window" id="explorer">
+    <div class="titlebar">Explorador de Archivos <button class="closeBtn" onclick="closeWindow('explorer')">X</button></div>
+    <div class="content">(simulación de carpetas y archivos...)</div>
+  </div>
+
+  <div class="window" id="browser">
+    <div class="titlebar">Navegador Web <button class="closeBtn" onclick="closeWindow('browser')">X</button></div>
+    <div class="content">
+      <input type="text" id="url" value="https://www.bing.com" style="width: 100%;" onkeydown="if(event.key==='Enter') loadURL()">
+      <iframe id="iframe" src="https://www.bing.com" style="width: 100%; height: 90%;"></iframe>
+    </div>
+  </div>
+
+  <div class="window" id="chat">
+    <div class="titlebar">Chat Simulado <button class="closeBtn" onclick="closeWindow('chat')">X</button></div>
+    <div class="content">
+      <div id="chatlog"></div>
+      <input type="text" id="chatInput" onkeydown="if(event.key==='Enter') sendChat()">
+    </div>
+  </div>
+
+  <div class="window" id="settings">
+    <div class="titlebar">Ajustes <button class="closeBtn" onclick="closeWindow('settings')">X</button></div>
+    <div class="content">
+      <label>Cambiar fondo: <input type="text" id="bgUrl" placeholder="URL de imagen" onkeydown="if(event.key==='Enter') changeBackground()"></label>
+    </div>
+  </div>
+
+  <div class="window" id="admin">
+    <div class="titlebar">Modo Admin <button class="closeBtn" onclick="closeWindow('admin')">X</button></div>
+    <div class="content">
+      <p>Introduce clave de admin: <input type="password" id="adminPass" onkeydown="if(event.key==='Enter') checkAdmin()"></p>
+      <div id="adminPanel" style="display:none">
+        <p>Bienvenido al modo administrador. (Más opciones próximamente...)</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="window" id="assistant">
+    <div class="titlebar">Asistente IA <button class="closeBtn" onclick="closeWindow('assistant')">X</button></div>
+    <div class="content">
+      <p>Hola, soy tu asistente Anhell. ¿En qué puedo ayudarte?</p>
+      <input type="text" id="assistantInput" onkeydown="if(event.key==='Enter') talkToAssistant()">
+      <div id="assistantOutput"></div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
